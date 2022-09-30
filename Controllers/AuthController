@@ -1,0 +1,6 @@
+const User = require('../Models/UserModel');
+const cors = require('cors');
+
+const login = (async (req, resp) => {
+    resp.send(req.body);
+});
