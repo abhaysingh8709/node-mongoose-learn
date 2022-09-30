@@ -3,10 +3,10 @@ require('../config');
 const app = express();
 app.use(express.json());
 
-const user_routes = require('./UserRouter.js');
-const auth_routes = require('./AuthRouter.js');
+const UserRoute = require('./UserRouter.js');
+const AuthRoute = require('./AuthRouter.js');
 
-app.use('/user', user_routes);
-app.use('/auth', auth_routes);
+app.use('/user', UserRoute);
+app.use('/auth', AuthRoute);
 
 app.listen(4500);
