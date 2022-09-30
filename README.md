@@ -7,3 +7,4 @@
 # npm i ejs
 # npm i mongodb
 # npm i nodemon
+# npm i mongoose
