@@ -14,8 +14,6 @@ const createUser = (async (req, resp) => {
     let data = new User(req.body);
     let result = await data.save();
 
-    let allData = await User.find();
-
     if (result) {
         resp.send("Successfully Created");
     } else {
