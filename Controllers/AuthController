@@ -4,3 +4,7 @@ const cors = require('cors');
 const login = (async (req, resp) => {
     resp.send(req.body);
 });
+
+module.exports = {
+    login,
+}
