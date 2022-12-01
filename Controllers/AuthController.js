@@ -4,7 +4,9 @@ const Jwt = require('jsonwebtoken');
 const jwtKey = 'node-db';
 //FOR LOGIN PAGE SHOW
 const showLogin = (async (req, resp) => {
-    resp.send(req.body);
+    var users = [];
+    resp.render('profile',{users});
+    // resp.send(req.body);
 });
 
 // FOR LOGIN
@@ -34,7 +36,8 @@ const showRegister = (async (req, resp) => {
 
 //FOR REGISTER
 const register = (async (req, resp) => {
-    resp.send(req.body);
+    resp.render('profile',{users});
+    // resp.send(req.body);
 });
 
 module.exports = {

@@ -2,8 +2,10 @@
 const User = require('../Models/UserModel');
 
 const getUsers = (async (req, resp) => {
-    let allData = await User.find();
-    resp.send(allData);
+    let users = await User.find();
+    resp.render('profile',{users});
+
+    // resp.send(allData);
 });
 const getUser = (async (req, resp) => {
     let allData = await User.find();
@@ -15,9 +17,19 @@ const createUser = (async (req, resp) => {
     let result = await data.save();
 
     if (result) {
-        resp.send("Successfully Created");
+        resp.send(JSON.stringify("Successfully Created"));
     } else {
-        resp.send("Failed");
+        resp.send(JSON.stringify("Failed"));
+    }
+});
+
+const deleteUser = (async (req, resp) => {
+    const _id = req.params.userID;
+    let data = await User.deleteOne({ _id: _id });
+    if (data.acknowledged) {
+        resp.send(JSON.stringify("Successfully Deleted"));
+    } else {
+        resp.send(JSON.stringify("Failed"));
     }
 });
 
@@ -36,17 +48,11 @@ const createUser = (async (req, resp) => {
 //     res.status(200).json('Product updated')
 // })
 
-// const deleteProduct = ((req, res) => {
-//     const id = Number(req.params.productID)
-//     const index = products.findIndex(product => product.id === id)
-//     products.splice(index,1)
-//     res.status(200).json('Product deleted')
-// })
 
 module.exports = {
     getUsers,
     getUser,
     createUser,
     // updateUser,
-    // deleteUser
+    deleteUser
 }
